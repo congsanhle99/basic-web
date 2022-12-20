@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/tsawler/go-course/pkg/config"
+	"github.com/tsawler/go-course/pkg/models"
 	"github.com/tsawler/go-course/pkg/render"
 )
 
@@ -24,9 +25,15 @@ func NewHandlers(r *Repository) {
 }
 
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "home.html")
+	render.RenderTemplate(w, "home.html", &models.TemplateData{})
 }
 
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "about.html")
+	// perform some logic
+	stringMap := make(map[string]string)
+	stringMap["test"] = "Hello again!"
+	// send data to the template
+	render.RenderTemplate(w, "about.html", &models.TemplateData{
+		StringMap: stringMap,
+	})
 }
