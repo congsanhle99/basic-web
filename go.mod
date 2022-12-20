@@ -1,4 +1,4 @@
-//go mod init example.com/m
-module example.com/m
+// go mod init github.com/tsawler/go-course
+module github.com/tsawler/go-course
 
 go 1.19
